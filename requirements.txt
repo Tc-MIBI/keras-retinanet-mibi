@@ -1,0 +1,10 @@
+tensorflow-gpu == 1.14.0
+keras == 2.3.0
+keras-resnet == 0.1.0
+opencv-python >= 3.3.0
+pillow
+cython
+git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI
+matplotlib
+progressbar2
+

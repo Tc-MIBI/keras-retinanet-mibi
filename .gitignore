@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+/build/
+/dist/
+/eggs/
+/*-eggs/
+.eggs/
+/sdist/
+/wheels/
+/*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# logs
+nohup.out
+*.err
+*.log
+
+# generated files
+keras_retinanet/utils/compute_overlap.c
+keras_retinanet/utils/compute_overlap.cpython-35m-x86_64-linux-gnu.so
+
+# training/evaliation output
+/train-mibi-*/
+/evaluate-mibi/
+/2020*/
+
+# IDE
+.idea/
