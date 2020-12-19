@@ -210,6 +210,12 @@ def __build_model_pyramid(name, model, features):
     Returns
         A tensor containing the response from the submodel on the FPN features.
     """
+
+    # add dropout in front of class output
+    if name == 'classification':
+        x = keras.layers.Concatenate(axis=1, name=name + '_predropout')([model(f) for f in features])
+        return keras.layers.Dropout(0.5, name=name)(x)
+
     return keras.layers.Concatenate(axis=1, name=name)([model(f) for f in features])
 
 
