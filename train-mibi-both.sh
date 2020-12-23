@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CUDA_VISIBLE_DEVICES=0
+# export CUDA_VISIBLE_DEVICES=0
 
 DATASET_DIR="../pascal-mibi-both-dataset-notest"
 OUTPUT_DIR="./train-mibi-both"
@@ -14,8 +14,12 @@ STD_LOG="./${OUTPUT_DIR}/train.log"
 keras_retinanet/bin/train.py \
  --random-transform \
  --epochs 100 \
- --batch-size 4 \
- --steps 2500 \
+ --batch-size 8 \
+ --steps 1250 \
+ --multi-gpu 2 \
+ --multi-gpu-force \
+ --multiprocessing \
+ --workers 4 \
  --compute-val-loss \
  --image-min-side 800 \
  --image-max-side 1333 \
