@@ -1,4 +1,4 @@
-#Explanation: English
+# Explanation: English
 # keras-retinanet-mibi #
 
 This project was developed based on fizyr/keras-retinanet and modified it for MIBI.
@@ -120,7 +120,7 @@ Evaluate the following against "three models" x "three datasets" x "validation d
 Evaluation results are stored in . /evaluate-mibi/.
 
 
-#説明: 日本語
+# 説明: 日本語
 # keras-retinanet-mibi #
 
 fizyr/keras-retinanet をベースとして MIBI タスクの為にカスタマイズしたもの。
