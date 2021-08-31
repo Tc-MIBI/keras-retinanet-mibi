@@ -1,13 +1,129 @@
+#Explanation: English
+# keras-retinanet-mibi #
+
+This project was developed based on fizyr/keras-retinanet and modified it for MIBI.
+
+### Training dataset ###
+
+Prepare the training and validation datasets in the following locations, each in a PASCAL format directory structure.
+
+- ../pascal-mibi-both-dataset-notest
+- ../pascal-mibi-delay-dataset-notest
+- ../pascal-mibi-early-dataset-notest
+
+Examples
+```
+├── Annotations
+│   ├── delay_P001.xml
+│   ├── ...
+│   ├── delay_mag_P001.xml
+│   ├── ...
+│   ├── early_P001.xml
+│   ├── ...
+│   ├── early_mag_P001.xml
+│   ├── ...
+├── ImageSets
+│   └── Main
+│       ├── test.txt    # Empty
+│       ├── train.txt   # Filenames for training
+│       └── val.txt     # Filenames for validation
+├── JPEGImages
+│   ├── delay_P001.png
+│   ├── ...
+│   ├── delay_mag_P001.png
+│   ├── ...
+│   ├── early_P001.png
+│   ├── ...
+│   ├── early_mag_P001.png
+│   ├── ...
+```
+
+### Test dataset ###
+
+Prepare a test dataset in the following locations, each with a directory structure in PASCAL format.
+
+- ../pascal-mibi-both-dataset-test-all
+- ../pascal-mibi-delay-dataset-test-all
+- ../pascal-mibi-early-dataset-test-all
+
+Examples
+```
+├── Annotations
+│   ├── delay_P001.xml
+│   ├── ...
+│   ├── delay_mag_P001.xml
+│   ├── ...
+│   ├── early_P001.xml
+│   ├── ...
+│   ├── early_mag_P001.xml
+│   ├── ...
+├── ImageSets
+│   └── Main
+│       ├── test.txt        # Filenames for test excluding no annotations
+│       ├── test_all.txt    # Filenames for test
+│       ├── train.txt       # Empty
+│       └── val.txt         # Empty
+├── JPEGImages
+│   ├── delay_P001.png
+│   ├── ...
+│   ├── delay_mag_P001.png
+│   ├── ...
+│   ├── early_P001.png
+│   ├── ...
+│   ├── early_mag_P001.png
+│   ├── ...
+```
+
+### Training ###
+
+Run ./train-mibi-serial.sh
+
+Training is performed on each of the three datasets, and the results are stored in the following directories.
+
+- ./train-mibi-both/
+- ./train-mibi-delay/
+- ./train-mibi-early/
+
+Examples in the ./train-mibi-both/
+
+```
+├── logs
+│   └── events.out.tfevents....     # TensorBoard log
+├── snapshots
+│   ├── resnet50_pascal-mibi_01.h5  # Trained model
+│   ├── ...
+├── train.err                       # Error log
+└── train.log                       # Log
+```
+
+### Evaluation ###
+
+Run the training described in the previous section, or copy the trained model (h5 file) from https://github.com/Tc-MIBI/keras-retinanet-mibi/releases
+Set it to ./snapshots/
+
+```
+snapshots/
+├── both-best-performing.h5
+├── delay-best-performing.h5
+└── early-best-performing.h5
+```
+
+Run ./evaluate-mibi-serial.sh
+
+Evaluate the following against "three models" x "three datasets" x "validation dataset and test dataset".
+
+- FROC
+- mAP
+- Image generation with likelihood scores for bounding boxes
+- Presence/absence judgment by score criteria value
+
+Evaluation results are stored in . /evaluate-mibi/.
+
+
+#説明: 日本語
 # keras-retinanet-mibi #
 
 fizyr/keras-retinanet をベースとして MIBI タスクの為にカスタマイズしたもの。
-
-- MIBI タスクのためのデータセットや分類クラス定義を追加。
-- 入力画像形式をグレースケールに変更し、対応する入力テンソル形状を調整。
-- EarlyStopping を無効化。
-- MIBI タスクに必要な評価を行うために評価用スクリプトを調整。
-
-ネットワーク（モデル）には変更を加えていない。
 
 ### トレーニングデータセット ###
 
