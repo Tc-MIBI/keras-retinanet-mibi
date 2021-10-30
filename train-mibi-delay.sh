@@ -1,5 +1,4 @@
 #!/bin/bash
-curl -X POST --data-urlencode "payload={\"channel\": \"#mibi\", \"username\": \"webhookbot\", \"text\": \"train-mibi-delay.sh is starting\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
 
 # export CUDA_VISIBLE_DEVICES=0,1
 
@@ -27,5 +26,3 @@ keras_retinanet/bin/train.py \
  --snapshot-path $SNAPSHOP_PATH \
  --tensorboard-dir $TENSORBOARD_DIR \
  pascal-mibi $DATASET_DIR 2>>$ERR_LOG >>$STD_LOG
-
-curl -X POST --data-urlencode "payload={\"channel\": \"#mibi\", \"username\": \"webhookbot\", \"text\": \"train-mibi-delay.sh is terminating\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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

@@ -9,6 +9,13 @@ fizyr/keras-retinanet をベースとして MIBI タスクの為にカスタマ�
 
 ネットワーク（モデル）には変更を加えていない。
 
+### install ###
+
+Cython コードをコンパイルするために
+```
+python setup.py build_ext --inplace
+```
+
 ### トレーニングデータセット ###
 
 以下の場所にそれぞれ PASCAL 形式のディレクトリ構成でトレーニングとバリデーションのデータセットを用意する。
