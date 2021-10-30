@@ -1,13 +1,7 @@
 #!/bin/bash
 
- ./evaluate-mibi.sh delay early
- ./evaluate-mibi.sh delay delay
- ./evaluate-mibi.sh delay both
+SCORE_THRESHOLD=-1.0
+IOU_THRESHOLD=0.3
 
- ./evaluate-mibi.sh early early
- ./evaluate-mibi.sh early delay
- ./evaluate-mibi.sh early both
-
- ./evaluate-mibi.sh both early
- ./evaluate-mibi.sh both delay
- ./evaluate-mibi.sh both both
+ ./evaluate-mibi.sh delay delay ${SCORE_THRESHOLD} ${IOU_THRESHOLD}
+ ./evaluate-mibi.sh early early ${SCORE_THRESHOLD} ${IOU_THRESHOLD}

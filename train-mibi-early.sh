@@ -1,9 +1,10 @@
 #!/bin/bash
+curl -X POST --data-urlencode "payload={\"channel\": \"#mibi\", \"username\": \"webhookbot\", \"text\": \"train-mibi-early.sh is starting\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
 
-# export CUDA_VISIBLE_DEVICES=0
+# export CUDA_VISIBLE_DEVICES=0,1
 
-DATASET_DIR="../pascal-mibi-early-dataset-notest"
-OUTPUT_DIR="./train-mibi-early"
+DATASET_DIR="../pascal-mibi-early-dataset-notest-with-negative"
+OUTPUT_DIR="./train-mibi-early-with-negative"
 
 mkdir ${OUTPUT_DIR}
 SNAPSHOP_PATH="./${OUTPUT_DIR}/snapshots"
@@ -26,3 +27,5 @@ keras_retinanet/bin/train.py \
  --snapshot-path $SNAPSHOP_PATH \
  --tensorboard-dir $TENSORBOARD_DIR \
  pascal-mibi $DATASET_DIR 2>>$ERR_LOG >>$STD_LOG
+
+curl -X POST --data-urlencode "payload={\"channel\": \"#mibi\", \"username\": \"webhookbot\", \"text\": \"train-mibi-early.sh is terminating\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
